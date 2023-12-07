@@ -7,12 +7,11 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: 2048-game-dev
     name: in-cluster
+    namespace: argocd
   project: appbundle-project-dev
   source:
-    path: kustomized_helm/overlays/dev
-    repoURL: https://github.com/d0-labs/argocd-app-of-apps-child-2048-game
+    path: helm
+    repoURL: https://github.com/shamonshan/argocd-demo-deployment.git
     targetRevision: HEAD
-    plugin:
-      name: kustomized-helm
+   
