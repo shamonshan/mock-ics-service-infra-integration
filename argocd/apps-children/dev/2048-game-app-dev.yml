@@ -9,6 +9,7 @@ spec:
   destination:
     name: in-cluster
     namespace: argocd
+  syncPolicy: {}
   project: appbundle-project-dev
   source:
     path: helm
