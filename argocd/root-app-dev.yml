@@ -10,7 +10,9 @@ spec:
     namespace: default
     name: in-cluster
   project: appbundle-project-dev
+  syncPolicy:
+    automated: {}
   source:
     path: argocd/apps-children/dev
     repoURL: https://github.com/shamonshan/argocd-root
-    targetRevision: cd7e92193792fe7d47a091fc8c48c2aeb9ce53af
+    targetRevision: HEAD
