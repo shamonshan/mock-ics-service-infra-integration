@@ -11,7 +11,7 @@ spec:
     name: in-cluster
   project: appbundle-project-dev
   syncPolicy:
-    automated: {}
+    automated: {} 
   source:
     path: argocd/apps-children/dev
     repoURL: https://github.com/shamonshan/argocd-root
