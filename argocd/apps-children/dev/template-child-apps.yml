@@ -18,7 +18,8 @@ spec:
           files:
           - path: configs/config.yml
       - list:
-          elementsYaml: "{{ .configs.oe-namespaces | toJson }}"
+          elements: []
+          elementsYaml: "{{ .configs.components | toJson }}"
   template:
     metadata:
       name: '{{.name}}'

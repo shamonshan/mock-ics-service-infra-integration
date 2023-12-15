@@ -2,7 +2,7 @@ configs:
   project: appbundle-project-dev
   cluster: in-cluster
   cluster-url : https://kubernetes.default.svc
-  oe-namespaces:  
+  components:  
     - name: component1
       namespace: app1
       version: "HEAD"
