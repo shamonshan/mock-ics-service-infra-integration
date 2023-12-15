@@ -1,0 +1,15 @@
+configs:  
+  project: appbundle-project-dev
+  cluster: in-cluster
+  cluster-url : https://kubernetes.default.svc
+  oe-namespaces:  
+    - name: component1
+      namespace: app1
+      version: "HEAD"
+      repoUrl: "https://github.com/shamonshan/argocd-demo-deployment.git"
+      namespace: component1
+    - name: component2
+      namespace: app2
+      version: "HEAD"
+      repoUrl: "https://github.com/shamonshan/argocd-demo-deployment-1.git"
+  
