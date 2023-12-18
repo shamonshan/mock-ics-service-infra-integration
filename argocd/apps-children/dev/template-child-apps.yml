@@ -30,11 +30,11 @@ spec:
         namespace: '{{.namespace}}'
       source:
          path : helm
-        {{ - if eq .type "fc" }}
+        {{- if eq .type "fc" -}}
         repoURL: '{{.configs.repos.fc.url}}'
         targetRevision: '{{.configs.repos.fc.commitHash}}'
-        {{ - end }}
-         {{ - if eq .type "wl" }}
+        {{- end -}}
+         {{- if eq .type "wl" -}}
         repoURL: '{{.configs.repos.wl.url}}'
         targetRevision: '{{.configs.repos.wl.commitHash}}'
-        {{ - end }}
+        {{- end -}}
