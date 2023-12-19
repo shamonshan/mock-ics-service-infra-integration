@@ -21,11 +21,6 @@ spec:
           elements: []
           elementsYaml: "{{ .configs.components | toJson }}"
   template:
-  {{$url := "" }}
-  {{$type := "fc"}}
-  {{ if eq $type "fc"}}
-  {{$url = "fc.com"}}
-  {{end}}
     metadata:
       name: '{{.name}}'
     spec:
@@ -34,6 +29,6 @@ spec:
         name: in-cluster
         namespace: '{{.namespace}}'
       source:
-        repoURL: '{{$url}}'
+        repoURL: '{{.repoUrl}}'
         path : helm
         targetRevision: '{{.version}}'
