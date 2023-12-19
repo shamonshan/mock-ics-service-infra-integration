@@ -15,8 +15,8 @@ spec:
       - git:
           repoURL: https://github.com/shamonshan/argocd-root
           revision: HEAD
-          directories:
-          - path: configs/*
+          files:
+          - path: configs/config.yml
       - list:
           elements: []
           elementsYaml: "{{ .configs.components | toJson }}"
