@@ -12,18 +12,13 @@ spec:
   generators:
   - matrix:
       generators:
-        - git:
+      - git:
           repoURL: https://github.com/shamonshan/argocd-root
           revision: HEAD
           files:
-          - path: configs/config.yml
-        - list:
-          elements: []
-          elementsYaml: "{{ .configs.components | toJson }}"
+          - path: argocd/apps-children/dev/configs/*.yml
       - list:
-            elements:
-              - https://github.com/your-org/repo1.git
-              - https://github.com/your-org/repo2.git
+          elementsYaml: "{{ .configs.components | toJson }}"
   template:
     metadata:
       name: 'app-{{.name}}'
@@ -33,6 +28,6 @@ spec:
         name: in-cluster
         namespace: '{{.namespace}}'
       source:
-        repoURL: test.com
+        repoURL: {{.repos.fc.url}}
         path : helm
-        targetRevision: HEAD
+        targetRevision: {{.repos.fc.commitHash}}

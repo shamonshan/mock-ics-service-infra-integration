@@ -1,0 +1,7 @@
+repos: 
+    fc:
+      url: "https://github.com/shamonshan/argocd-demo-deployment.git"
+      commitHash: HEAD
+    wl: 
+      url: "https://github.com/shamonshan/argocd-demo-deployment-1.git"
+      commitHash: HEAD

@@ -2,18 +2,6 @@ configs:
   project: appbundle-project-dev
   cluster: in-cluster
   cluster-url : https://kubernetes.default.svc
-  repos1: 
-    fc:
-      url: "https://github.com/shamonshan/argocd-demo-deployment.git"
-      commitHash: HEAD
-    wl: 
-      url: "https://github.com/shamonshan/argocd-demo-deployment-1.git"
-      commitHash: HEAD
-  repos2: 
-    - name: fc
-      url: "fc.com"
-    - name: wl
-      url: "wl.com"
   components:  
     - name: component1
       namespace: app1
