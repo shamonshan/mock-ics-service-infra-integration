@@ -5,17 +5,15 @@ configs:
   repos: 
     fc:
       url: "https://github.com/shamonshan/argocd-demo-deployment.git"
-      commitHash: "HEAD"
+      commitHash: HEAD
     wl: 
       url: "https://github.com/shamonshan/argocd-demo-deployment-1.git"
-      commitHash: "HEAD"
+      commitHash: HEAD
   components:  
     - name: component1
       namespace: app1
       type: fc
-      version: "HEAD"
     - name: component2
       namespace: app2
       type: wl
-      version: "HEAD"
   
