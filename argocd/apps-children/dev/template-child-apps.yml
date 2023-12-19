@@ -24,7 +24,7 @@ spec:
       repoURL: https://github.com/shamonshan/argocd-root
       revision: HEAD
       files:
-        - path: configs/*.yml
+        - path: configs/repo.yml
   template:
     metadata:
       name: '{{.name}}'
