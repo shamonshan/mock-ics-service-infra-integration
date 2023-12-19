@@ -14,6 +14,9 @@ configs:
       namespace: app1
       type: fc
     - name: component2
+      namespace: app1
+      type: wl
+    - name: component2
       namespace: app2
       type: wl
   

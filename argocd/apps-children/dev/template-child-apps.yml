@@ -17,6 +17,11 @@ spec:
           revision: HEAD
           files:
           - path: configs/config.yml
+      - git:
+          repoURL: https://github.com/shamonshan/argocd-root
+          revision: HEAD
+          files:
+          - path: configs/config-namespaces.yml
       - list:
           elements: []
           elementsYaml: "{{ .configs.components | toJson }}"
@@ -38,4 +43,4 @@ spec:
         {{if eq .type "wl"}}
         {{$version = .configs.repos.wl.commitHash}}
         {{end}}
-        {{$version}}'
+        {{.configs.hash}}'
