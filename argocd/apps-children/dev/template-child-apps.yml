@@ -29,6 +29,6 @@ spec:
         name: in-cluster
         namespace: '{{.namespace}}'
       source:
-        repoURL: '{{$url := ""}}{{if eq .type "fc"}}{{$url = .configs.repos.fc.url}}{{if eq .type "wl"}}{{$url = .configs.repos.wl.url}}{{end}}{{$url}}'
+        repoURL: '{{$url := ""}}{{if eq .type "fc"}}{{$url = .configs.repos.fc.url}}{{end}}{{if eq .type "wl"}}{{$url = .configs.repos.wl.url}}{{end}}{{$url}}'
         path : helm
         targetRevision: '{{.version}}'
