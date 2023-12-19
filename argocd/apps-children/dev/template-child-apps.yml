@@ -29,7 +29,6 @@ spec:
         name: in-cluster
         namespace: '{{.namespace}}'
       source:
-         path : helm
-        repoURL: '{{.configs.repos.fc.url}}'
-        targetRevision: '{{.configs.repos.fc.commitHash}}'
-      
+        repoURL: '{{.repoUrl}}'
+        path : helm
+        targetRevision: '{{.version}}'
