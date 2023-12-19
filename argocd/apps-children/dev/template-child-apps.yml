@@ -20,7 +20,10 @@ spec:
         - list:
           elements: []
           elementsYaml: "{{ .configs.components | toJson }}"
-      
+      - list:
+            elements:
+              - https://github.com/your-org/repo1.git
+              - https://github.com/your-org/repo2.git
   template:
     metadata:
       name: 'app-{{.name}}'
