@@ -24,7 +24,7 @@ spec:
     metadata:
       name: '{{.name}}'
     spec:
-      project: '{{.configs.project }}'
+      project: '{{.configs.project}}'
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
