@@ -20,9 +20,6 @@ spec:
       - list:
           elements: []
           elementsYaml: "{{ .configs.components | toJson }}"
-     - list :
-          elements: []
-          elementsYaml: "{{ .configs.repos2 | toJson }}"
   template:
     metadata:
       name: 'app-{{.name}}'
