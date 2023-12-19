@@ -19,7 +19,7 @@ spec:
           - path: configs/config-namespaces.yml
       - list:
           elements: []
-          elementsYaml: "{{ .all-oes | toJson }}"
+          elementsYaml: "{{ all-oes | toJson }}"
   template:
     metadata:
       name: 'app-{{.namespace}}'
