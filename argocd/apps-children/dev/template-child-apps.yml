@@ -29,6 +29,6 @@ spec:
         name: in-cluster
         namespace: '{{.namespace}}'
       source:
-        repoURL: '{{.repoUrl}}'
+        repoURL: '{{$test := "test"}}{{.repoUrl}}'
         path : helm
         targetRevision: '{{.version}}'
