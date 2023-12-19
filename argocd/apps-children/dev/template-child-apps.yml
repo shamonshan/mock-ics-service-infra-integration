@@ -12,14 +12,15 @@ spec:
   generators:
   - matrix:
       generators:
-      - git:
+        - git:
           repoURL: https://github.com/shamonshan/argocd-root
           revision: HEAD
           files:
           - path: configs/config.yml
-      - list:
+        - list:
           elements: []
           elementsYaml: "{{ .configs.components | toJson }}"
+      
   template:
     metadata:
       name: 'app-{{.name}}'
