@@ -4,20 +4,18 @@ configs:
   cluster-url : https://kubernetes.default.svc
   repos: 
     fc:
-      url: "test"
-      commitHash: "test"
+      url: "https://github.com/shamonshan/argocd-demo-deployment.git"
+      commitHash: "HEAD"
     wl: 
-      url: "test1"
-      commitHash: "test1"
+      url: "https://github.com/shamonshan/argocd-demo-deployment-1.git"
+      commitHash: "HEAD"
   components:  
     - name: component1
       namespace: app1
-      version: "HEAD"
-      repoUrl: "https://github.com/shamonshan/argocd-demo-deployment.git"
       type: fc
+      version: "HEAD"
     - name: component2
       namespace: app2
-      version: "HEAD"
-      repoUrl: "https://github.com/shamonshan/argocd-demo-deployment-1.git"
       type: wl
+      version: "HEAD"
   
