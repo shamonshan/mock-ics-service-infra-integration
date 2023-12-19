@@ -7,7 +7,6 @@ configs:
       namespace: app1
       version: "HEAD"
       repoUrl: "https://github.com/shamonshan/argocd-demo-deployment.git"
-      namespace: component1
     - name: component2
       namespace: app2
       version: "HEAD"
