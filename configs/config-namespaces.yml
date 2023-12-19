@@ -3,5 +3,5 @@ all-oes:
       namespace: app1
     - name: component2
       namespace: app1
-    - name: component2
+    - name: component3
       namespace: app2
