@@ -20,9 +20,12 @@ spec:
       - list:
           elements: []
           elementsYaml: "{{ .configs.components | toJson }}"
+     - list :
+          elements: []
+          elementsYaml: "{{ .configs.repos2 | toJson }}"
   template:
     metadata:
-      name: 'app-{{.namespace}}'
+      name: 'app-{{.name}}'
     spec:
       project: appbundle-project-dev
       destination:
