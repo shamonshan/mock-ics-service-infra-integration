@@ -16,18 +16,19 @@ spec:
           repoURL: https://github.com/shamonshan/argocd-root
           revision: HEAD
           files:
-          - path: argocd/apps-children/dev/configs/*.yml
+          - path: configs/*.yml
       - list:
+          elements: []
           elementsYaml: "{{ .configs.components | toJson }}"
   template:
     metadata:
-      name: 'app-{{.name}}'
+      name: '{{.name}}'
     spec:
-      project: appbundle-project-dev
+      project: '{{.configs.project}}'
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
       source:
-        repoURL: {{.repos.fc.url}}
+        repoURL: '{{.repos.fc.url}}'
         path : helm
-        targetRevision: {{.repos.fc.commitHash}}
+        targetRevision: '{{.repos.fc.commitHash}}'
