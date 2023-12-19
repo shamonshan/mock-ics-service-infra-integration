@@ -21,8 +21,6 @@ spec:
           elements: []
           elementsYaml: "{{ .configs.components | toJson }}"
   template:
-    {{ $repo := "test.com" }}
-    {{ $commitHash := "sjs" }}
     metadata:
       name: '{{.name}}'
     spec:
@@ -32,6 +30,6 @@ spec:
         namespace: '{{.namespace}}'
       source:
          path : helm
-        repoURL: '{{ $repo }}'
-        targetRevision: '{{ $commitHash }}'
+        repoURL: '{{.configs.repos.fc.url}}'
+        targetRevision: '{{.configs.repos.fc.commitHash}}'
       
