@@ -1,4 +1,5 @@
-all-oes:  
+configs:
+  all-oes:  
     - name: component1
       namespace: app1
     - name: component2
