@@ -21,7 +21,7 @@ spec:
           elements: []
           elementsYaml: "{{ .configs.components | toJson }}"
   template:
-  {{- $test := test }}
+  {{$test := "test" }}
     metadata:
       name: '{{.name}}'
     spec:
