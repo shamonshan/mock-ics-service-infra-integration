@@ -16,10 +16,10 @@ spec:
           repoURL: https://github.com/shamonshan/argocd-root
           revision: HEAD
           files:
-          - path: configs/config-namespaces.yml
+          - path: configs/config.yml
       - list:
           elements: []
-          elementsYaml: "{{ .configs.all-oes | toJson }}"
+          elementsYaml: "{{ .configs.components | toJson }}"
   template:
     metadata:
       name: 'app-{{.namespace}}'
