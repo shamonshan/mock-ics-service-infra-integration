@@ -16,7 +16,7 @@ configs:
     - name: component2
       namespace: app1
       type: wl
-    - name: component2
+    - name: component3
       namespace: app2
       type: wl
   

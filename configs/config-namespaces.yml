@@ -1,4 +1,7 @@
-test-repos:  
-   repo: "test"
-   hash : "test"
-  
+all-oes:  
+    - name: component1
+      namespace: app1
+    - name: component2
+      namespace: app1
+    - name: component2
+      namespace: app2
