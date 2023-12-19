@@ -10,32 +10,29 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-  - matrix:
-      generators:
-       - matrix:
-         generators:   
-         - git:
-          repoURL: https://github.com/shamonshan/argocd-root
-          revision: HEAD
-          files:
-           - path: configs/config-namespaces.yml
-         - list:
-          elements: []
-          elementsYaml: "{{ .configs.all-oes | toJson }}"
-      - list:
-         elements:
-         - cluster: fc-mid
-          url: https://test.com
-          version: HEAD
-         - cluster: wl-back
-          url: https://test1.com
-          version: HEAD
-        
+    - matrix:
+        generators:
+          - git:
+             repoURL: https://github.com/shamonshan/argocd-root
+             revision: HEAD
+             files:
+              - path: configs/config-namespaces.yml
+          - list:
+              elements: []
+              elementsYaml: "{{ .all-oes | toJson }}"
+        - list:
+            elements:
+             - service: fc-backend 
+               url: https://kubernetes.default.svc
+               version: HEAD
+             - service: wl-backend
+               url: https://kubernetes.default.svc
+               version: HEAD
   template:
     metadata:
-      name: '{{.name}}'
+      name: '{{.service}}-{{.namespace}}'
     spec:
-      project: '{{.configs.project}}'
+      project: appbundle-project-dev
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
