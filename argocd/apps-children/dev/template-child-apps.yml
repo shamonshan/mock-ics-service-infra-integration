@@ -21,9 +21,8 @@ spec:
           elements: []
           elementsYaml: "{{ .configs.components | toJson }}"
   template:
-    {{- $repo := "test.com" }}
-    {{- $commitHash := "sjs" }}
-  
+    {{ $repo := "test.com" }}
+    {{ $commitHash := "sjs" }}
     metadata:
       name: '{{.name}}'
     spec:
