@@ -38,4 +38,4 @@ spec:
         {{if eq .type "wl"}}
         {{$version = .configs.repos.wl.commitHash}}
         {{end}}
-        {{.configs.hash}}'
+        {{$version}}'
