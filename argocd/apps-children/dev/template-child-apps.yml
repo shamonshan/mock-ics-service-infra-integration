@@ -23,12 +23,14 @@ spec:
         - list: 
             elements:
               - url: https://github.com/shamonshan/argocd-demo-deployment.git
+                application: fc
                 version: HEAD
               - url: https://github.com/shamonshan/argocd-demo-deployment-1.git
+                application: wl
                 version: HEAD
   template:
     metadata:
-      name: '{{.name}}'
+      name: '{{.name}}-{{.application}}'
     spec:
       project: appbundle-project-dev
       destination:
