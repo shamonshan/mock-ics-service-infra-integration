@@ -29,7 +29,7 @@ spec:
                 - path: configs/repo.yaml
              - list:
                 elements: []
-                elementsYaml: "{{ .repos | toJson }}"
+                elementsYaml: "{{ .config.repos | toJson }}"
   template:
     metadata:
       name: '{{.name}}-{{.application}}'

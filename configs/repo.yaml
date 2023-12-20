@@ -1,4 +1,5 @@
-repos:  
+config:
+ repos:  
     - url: https://github.com/shamonshan/argocd-demo-deployment.git
       application: fc
       version: HEAD
