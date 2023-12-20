@@ -12,39 +12,29 @@ spec:
   generators:
    - matrix:
       generators:
-       - merge: 
-          mergeKeys:
-          - name
-          generators:
-            - git :
-                repoURL: https://github.com/shamonshan/argocd-root
-                revision: HEAD
-              files:
-               - path: configs/config.yml
-            - list : 
-               elements: []
-               elementsYaml: "{{ .configs.components | toJson }}"
-       - merge: 
-          mergeKeys:
-          - name
-          generators:
-            - git :
-                repoURL: https://github.com/shamonshan/argocd-root
-                revision: HEAD
-              files:
-               - path: configs/repo.yml
-            - list : 
-               elements: []
-               elementsYaml: "{{ .repos | toJson }}"
+        - list: 
+            elements:
+              - name: component1
+                namespace: app1
+                type: fc
+              - name: component2
+                namespace: app2
+                type: wl
+        - list: 
+            elements:
+              - url: https://github.com/shamonshan/argocd-demo-deployment.git
+                version: HEAD
+              - url: https://github.com/shamonshan/argocd-demo-deployment-1.git
+                version: HEAD
   template:
     metadata:
       name: '{{.name}}'
     spec:
-      project: '{{.configs.project}}'
+      project: appbundle-project-dev
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
       source:
-        repoURL: '{{.repos.fc.url}}'
+        repoURL: '{{.url}}'
         path : helm
-        targetRevision: '{{.repos.fc.commitHash}}'
+        targetRevision: '{{.version}}'
