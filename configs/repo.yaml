@@ -6,3 +6,6 @@ config:
     - url: https://github.com/shamonshan/argocd-demo-deployment-1.git
       application: wl
       version: HEAD
+    - url: https://github.com/shamonshan/argocd-demo-deployment-1.git
+      application: bill
+      version: HEAD
