@@ -1,7 +1,7 @@
 repos:  
-    - name: fc
-      namespace: https://github.com/shamonshan/argocd-demo-deployment.git
-      commitHash: HEAD
-    - name: wl
-      namespace: https://github.com/shamonshan/argocd-demo-deployment-1.git
-      commitHash: HEAD
+    - url: https://github.com/shamonshan/argocd-demo-deployment.git
+      application: fc
+      version: HEAD
+    - url: https://github.com/shamonshan/argocd-demo-deployment-1.git
+      application: wl
+      version: HEAD
