@@ -20,12 +20,12 @@ spec:
                 namespace: app2
         - matrix :
             generators:
-             - git:
+            - git:
                repoURL: https://github.com/shamonshan/argocd-root
                revision: HEAD
                files:
-                - path: configs/repo.yaml
-             - list:
+               - path: configs/repo.yaml
+            - list:
                 elements: []
                 elementsYaml: "{{ .config.repos | toJson }}"
   template:
