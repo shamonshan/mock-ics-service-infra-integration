@@ -12,7 +12,9 @@ spec:
   generators:
    - matrix:
       generators:
-       - matrix:
+       - merge: 
+          mergeKeys:
+          - name
           generators:
             - git :
                 repoURL: https://github.com/shamonshan/argocd-root
@@ -22,7 +24,9 @@ spec:
             - list : 
                elements: []
                elementsYaml: "{{ .configs.components | toJson }}"
-       - matrix:
+       - merge: 
+          mergeKeys:
+          - name
           generators:
             - git :
                 repoURL: https://github.com/shamonshan/argocd-root
