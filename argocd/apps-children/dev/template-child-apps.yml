@@ -18,9 +18,7 @@ spec:
                 namespace: app1
               - name: component2
                 namespace: app2
-        - merge :
-            mergeKeys:
-             - url
+        - matrix :
             generators:
              - git:
                repoURL: https://github.com/shamonshan/argocd-root
