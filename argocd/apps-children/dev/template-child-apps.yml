@@ -24,10 +24,10 @@ spec:
                repoURL: https://github.com/shamonshan/argocd-root
                revision: HEAD
                files:
-                - path: configs/repo.yaml
+                - path: configs/config.yaml
              - list:
                 elements: []
-                elementsYaml: "{{ .config.repos | toJson }}"
+                elementsYaml: "{{ .configs.components | toJson }}"
   template:
     metadata:
       name: '{{.name}}-{{.application}}'
