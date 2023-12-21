@@ -43,3 +43,6 @@ spec:
         helm:
           valueFiles:
           - values.yaml
+          parameters: 
+          - name: "image.tag"
+            value: '{{.version}}'
