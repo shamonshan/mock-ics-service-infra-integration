@@ -30,7 +30,7 @@ spec:
                 version: HEAD
   template:
     metadata:
-      name: '{{.name}}-{{.application}}={{.path}}'
+      name: '{{.name}}-{{.application}}'
     spec:
       project: appbundle-project-dev
       destination:
@@ -42,7 +42,7 @@ spec:
         targetRevision: '{{.version}}'
         helm:
           valueFiles:
-          - $values/valuesfolder/values.yaml
-      - repoURL: 'https://github.com/shamonshan/argocd-root'
+          - $values/configs/values.yaml
+      - repoURL: 'https://github.com/shamonshan/helm-configs.git'
         targetRevision: HEAD
         ref: values
