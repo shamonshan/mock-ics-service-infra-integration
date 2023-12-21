@@ -30,7 +30,7 @@ spec:
                 version: HEAD
   template:
     metadata:
-      name: '{{.name}}-{{.application}}'
+      name: '{{.name}}-{{.application}}={{.path}}'
     spec:
       project: appbundle-project-dev
       destination:
