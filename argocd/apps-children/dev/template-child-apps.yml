@@ -38,11 +38,11 @@ spec:
         namespace: '{{.namespace}}'
       sources:
       - repoURL: '{{.url}}'
-          targetRevision: '{{.version}}'
-          path: helm
-          helm:
-            valueFiles:
-            - $values/valuesfolder/values.yaml
-      - repoURL: 'https://github.com/shamonshan/argocd-root.git'
-          targetRevision: HEAD
-          ref: values
+        path: helm
+        targetRevision: '{{.version}}'
+        helm:
+          valueFiles:
+          - $values/valuesfolder/values.yaml
+      - repoURL: 'https://github.com/shamonshan/argocd-root'
+        targetRevision: HEAD
+        ref: values
