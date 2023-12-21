@@ -39,6 +39,7 @@ spec:
       sources:
         - repoURL: '{{.url}}'
           targetRevision: '{{.version}}'
+          path: helm
           helm:
             valueFiles:
             - $values/helm-configs/values.yaml
