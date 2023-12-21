@@ -37,7 +37,7 @@ spec:
         name: in-cluster
         namespace: '{{.namespace}}'
       source:
-      - repoURL: '{{.url}}'
+        repoURL: '{{.url}}'
         path: helm
         targetRevision: '{{.version}}'
         helm:
