@@ -36,13 +36,10 @@ spec:
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
-      sources:
+      source:
       - repoURL: '{{.url}}'
         path: helm
         targetRevision: '{{.version}}'
         helm:
           valueFiles:
-          - $values/configs/values.yaml
-      - repoURL: 'https://github.com/shamonshan/helm-configs.git'
-        targetRevision: HEAD
-        ref: values
+          - values.yaml
