@@ -16,18 +16,18 @@ spec:
             elements:
               - name: component1
                 namespace: app1
+                type: fc
               - name: component2
                 namespace: app2
-        - matrix :
-            generators:
-            - git:
-               repoURL: https://github.com/shamonshan/argocd-root
-               revision: HEAD
-               files:
-               - path: configs/repo.yaml
-            - list:
-                elements: []
-                elementsYaml: "{{ .config.repos | toJson }}"
+                type: wl
+        - list: 
+            elements:
+              - url: https://github.com/shamonshan/argocd-demo-deployment.git
+                application: fc
+                version: HEAD
+              - url: https://github.com/shamonshan/argocd-demo-deployment-1.git
+                application: wl
+                version: HEAD
   template:
     metadata:
       name: '{{.name}}-{{.application}}'
