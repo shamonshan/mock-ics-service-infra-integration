@@ -14,7 +14,7 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-      - $values/config/values.yaml
+      - $values/configs/values.yaml
   - repoURL: 'https://github.com/shamonshan/helm-configs.git'
     targetRevision: HEAD
     ref: values
