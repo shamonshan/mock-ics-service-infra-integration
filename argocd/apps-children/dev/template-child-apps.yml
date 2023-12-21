@@ -32,7 +32,7 @@ spec:
     metadata:
       name: '{{.name}}-{{.application}}'
     spec:
-      project: appbundle-project-dev
+      project: default
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
