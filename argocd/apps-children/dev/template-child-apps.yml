@@ -36,7 +36,12 @@ spec:
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
-      source:
-        repoURL: '{{.url}}'
-        path : helm
-        targetRevision: '{{.version}}'
+      sources:
+        - repoURL: '{{.url}}'
+          targetRevision: '{{.version}}'
+          helm:
+            valueFiles:
+            - $values/helm-configs/values.yaml
+        - repoURL: 'https://github.com/shamonshan/argocd-root.git'
+          targetRevision: HEAD
+          ref: values
