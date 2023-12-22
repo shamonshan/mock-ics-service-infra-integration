@@ -31,18 +31,18 @@ spec:
   template:
     metadata:
       name: '{{.name}}-{{.application}}'
+      labels:
+        name: children-apps
     spec:
       project: default
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
-      sources:
-      - repoURL: '{{.url}}'
+      source:
+        repoURL: '{{.url}}'
         path: helm
         targetRevision: '{{.version}}'
         helm:
           valueFiles:
-          - $values/configs/values.yaml
-      - repoURL: 'https://github.com/shamonshan/helm-configs.git'
-        targetRevision: HEAD
-        ref: values
+          - values.yaml
+      
