@@ -5,29 +5,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: child-app-template
+  name: single-namespace-child-apps
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-   - matrix:
-      generators:
-        - list: 
-            elements:
-              - name: component1
-                namespace: app1
-                type: fc
-              - name: component2
-                namespace: app2
-                type: wl
-        - list: 
-            elements:
-              - url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
-                application: fc
-                version: HEAD
+  - list:
+      elements:
+        - name: app-common-ui
+          namespace: app-common-port
+          url: https://github.com/shamonshan/mock-ics-service-ui
+          version: HEAD
+        - name: app-common-org
+          namespace: app-common-port
+          url: https://github.com/shamonshan/mock-ics-service-organization-backend
+          version: HEAD
   template:
     metadata:
-      name: '{{.name}}-{{.application}}'
+      name: '{{.name}}'
       labels:
         name: children-apps
     spec:

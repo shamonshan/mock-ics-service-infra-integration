@@ -1,0 +1,43 @@
+# App templates can also be defined as part of the generator's template stanza. Sometimes it is
+# useful to do this in order to override the spec.template stanza, and when simple string
+# parameterization are insufficient. In the below examples, the generators[].XXX.template is 
+# a partial definition, which overrides/patch the default template.
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: multi-namespace-child-apps
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+   - matrix:
+      generators:
+        - list: 
+            elements:
+              - name: az-de
+                namespace: az-de
+              - name: az-it
+                namespace: az-it
+        - list: 
+            elements:
+              - url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
+                application: fc
+                version: HEAD
+  template:
+    metadata:
+      name: '{{.name}}-{{.application}}'
+      labels:
+        name: children-apps
+    spec:
+      project: default
+      destination:
+        name: in-cluster
+        namespace: '{{.namespace}}'
+      source:
+        repoURL: '{{.url}}'
+        path: helm
+        targetRevision: '{{.version}}'
+        helm:
+          valueFiles:
+          - values.yaml
+      
