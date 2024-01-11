@@ -23,7 +23,7 @@ spec:
               - url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
                 application: fc
                 version: HEAD
-                helm-path: values-fc.yml
+                helmpath: values-fc.yml
   template:
     metadata:
       name: '{{.name}}-{{.application}}'
@@ -39,7 +39,7 @@ spec:
         path: helm
         helm:
           valueFiles:
-          - $values/helm-configs/'{{.helm-path}}'
+          - $values/helm-configs/'{{.helmpath}}'
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
         targetRevision: HEAD
         ref: values
