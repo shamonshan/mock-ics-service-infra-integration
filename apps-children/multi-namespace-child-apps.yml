@@ -42,7 +42,7 @@ spec:
           - $values/helm-configs/{{.helmpath}}
           parameters:
           - name: "image.tag"
-            value: {{.version}}
+            value: '{{.version}}'
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
         targetRevision: HEAD
         ref: values
