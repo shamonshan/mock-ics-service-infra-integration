@@ -39,7 +39,7 @@ spec:
         path: helm
         helm:
           valueFiles:
-          - $values/helm-configs/values-fc.yml
+          - $values/helm-configs/'{{.helm-path}}'
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
         targetRevision: HEAD
         ref: values
