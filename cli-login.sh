@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-echo "Logging to ArgoCD ....."
+echo "Logging to ArgoCD CLI....."
 
 export ARGOCD_USERNAME=admin
 export ARGOCD_PASSWORD=6EKMW7JMIGuyF7TG
