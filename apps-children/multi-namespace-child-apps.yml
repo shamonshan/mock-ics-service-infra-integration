@@ -22,7 +22,8 @@ spec:
             elements:
               - url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
                 application: fc
-                version: 1.0.0
+                imageversion: 1.0.0
+                applicatioversion: HEAD
                 helmvaluespath: values-fc.yml
   template:
     metadata:
@@ -36,13 +37,14 @@ spec:
         namespace: '{{.namespace}}'
       sources:
       - repoURL: '{{.url}}'
+        targetRevision: '{{.applicatioversion}}'
         path: helm
         helm:
           valueFiles:
           - $values/helm-configs/{{.helmvaluespath}}
           parameters:
           - name: "image.tag"
-            value: '{{.version}}'
+            value: '{{.imageversion}}'
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
         targetRevision: HEAD
         ref: values
