@@ -33,15 +33,14 @@ spec:
             - key: type
               operator: In
               values:
-                - multi-namespace
+                - multi-namespace-child-apps
           maxUpdate: 1
-       
   template:
     metadata:
       name: '{{.name}}-{{.application}}'
       labels:
         name: children-apps
-        type: multi-namespace
+        type: multi-namespace-child-apps
     spec:
       project: mock-ics-service-infra-integration
       destination:
