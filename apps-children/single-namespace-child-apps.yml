@@ -36,7 +36,6 @@ spec:
         namespace: '{{.namespace}}'
       sources:
       - repoURL: '{{.url}}'
-        targetRevision: '{{.applicatioversion}}'
         path: helm
         helm:
           valueFiles:
