@@ -16,13 +16,11 @@ spec:
           namespace: app-common-port
           url: https://github.com/shamonshan/mock-ics-service-ui
           imageversion: 1.0.0
-          applicatioversion: HEAD
           helmvaluespath: values-ui.yml
         - name: app-common-org
           namespace: app-common-port
           url: https://github.com/shamonshan/mock-ics-service-organization-backend
           imageversion: 1.0.0
-          applicatioversion: HEAD
           helmvaluespath: values-org.yml
   template:
     metadata:
@@ -36,7 +34,6 @@ spec:
         namespace: '{{.namespace}}'
       sources:
       - repoURL: '{{.url}}'
-        targetRevision: '{{.applicatioversion}}'
         path: helm
         helm:
           valueFiles:
