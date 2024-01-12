@@ -25,11 +25,23 @@ spec:
                 imageversion: 1.0.0
                 applicatioversion: HEAD
                 helmvaluespath: values-fc.yml
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      steps:
+        - matchExpressions:
+            - key: type
+              operator: In
+              values:
+                - multi-namespace
+          maxUpdate: 1
+       
   template:
     metadata:
       name: '{{.name}}-{{.application}}'
       labels:
         name: children-apps
+        type: multi-namespace
     spec:
       project: mock-ics-service-infra-integration
       destination:
