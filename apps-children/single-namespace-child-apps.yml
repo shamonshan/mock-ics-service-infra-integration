@@ -15,11 +15,13 @@ spec:
         - name: app-common-ui
           namespace: app-common-port
           url: https://github.com/shamonshan/mock-ics-service-ui
-          version: HEAD
+          version: 1.0.0
+          helmvaluespath: values-ui.yml
         - name: app-common-org
           namespace: app-common-port
           url: https://github.com/shamonshan/mock-ics-service-organization-backend
-          version: HEAD
+          version: 1.0.0
+          helmvaluespath: values-org.yml
   template:
     metadata:
       name: '{{.name}}'
@@ -30,11 +32,16 @@ spec:
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
-      source:
-        repoURL: '{{.url}}'
+      sources:
+      - repoURL: '{{.url}}'
+        targetRevision: 9008j
         path: helm
-        targetRevision: '{{.version}}'
         helm:
           valueFiles:
-          - values.yaml
-      
+          - $values/helm-configs/{{.helmvaluespath}}
+          parameters:
+          - name: "image.tag"
+            value: '{{.version}}'
+      - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
+        targetRevision: HEAD
+        ref: values
