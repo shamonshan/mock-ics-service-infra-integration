@@ -26,8 +26,8 @@ spec:
                 applicatioversion: HEAD
                 helmvaluespath: values-fc.yml
   strategy:
-    type: RollingUpdate
-    rollingUpdate:
+    type: RollingSync
+    rollingSync:
       steps:
         - matchExpressions:
             - key: type
