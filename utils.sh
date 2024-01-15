@@ -5,7 +5,7 @@ set -o nounset
 set -o pipefail
 
 OPTIONS=(login
-          set_config sync_apps help
+          set_config sync_apps list_apps help
          )
 
 help_exit() {
@@ -52,3 +52,16 @@ if [[ $selections[set_config] == 'y' ]]; then
    argocd app set az-de-fc --values-literal-file helm-configs/values-fc.yml
    argocd app set az-it-fc --values-literal-file helm-configs/values-fc.yml
  fi
+
+if [[ $selections[sync_apps] == 'y' ]]; then
+    #In real implementation this must be in a loop and the parameters are from YAML/dynamically generated
+    # This can be grouped with labels also
+    argocd app sync app-common-org
+    argocd app sync app-common-ui
+    argocd app sync az-de-fc
+    argocd app sync az-it-fc
+fi
+
+if [[ $selections[list_apps] == 'y' ]]; then
+   argocd app list 
+fi
