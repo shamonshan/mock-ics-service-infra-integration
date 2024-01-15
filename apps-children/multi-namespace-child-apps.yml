@@ -46,17 +46,11 @@ spec:
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
-      sources:
+      source:
       - repoURL: '{{.url}}'
         targetRevision: '{{.applicatioversion}}'
         path: helm
         helm:
           valueFiles:
-          - $values/helm-configs/{{.helmvaluespath}}
-          parameters:
-          - name: "image.tag"
-            value: '{{.imageversion}}'
-      - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
-        targetRevision: HEAD
-        ref: values
+          - values.yaml
       
