@@ -48,4 +48,4 @@ spec:
         path: helm
         helm:
           valueFiles:
-          - https://github.com/shamonshan/mock-ics-service-infra-integration/blob/master/helm-configs/values-org.yaml
+          - values.yaml
