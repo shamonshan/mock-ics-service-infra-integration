@@ -10,14 +10,16 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-  - list:
-      elements:
-        - name: abs-upstream
-          namespace: app-abs
-          url: https://github.com/shamonshan/mock-ics-service-abs-upstream.git
-          imageversion: 1.0.1
-          applicationversion: HEAD
-          helmvaluespath: values-abs.yaml
+   - matrix:
+      generators:
+      - git:
+          repoURL: https://github.com/shamonshan/mock-ics-service-infra-integration
+          revision: HEAD
+          files:
+          - path: app-configs/abs.yaml
+      - list:
+          elements: []
+          elementsYaml: "{{ .configs.components | toJson }}"
   template:
     metadata:
       name: '{{.name}}'
@@ -30,11 +32,11 @@ spec:
         namespace: '{{.namespace}}'
       sources:
       - repoURL: '{{.url}}'
-        targetRevision: '{{.applicationversion}}'
+        targetRevision: '{{.helmchartversion}}'
         path: helm
         helm:
           valueFiles:
-          - $values/helm-configs/{{.helmvaluespath}}
+          - $values/helm-configs/{{.helmvaluesfilepath}}
           parameters:
           - name: "image.tag"
             value: '{{.imageversion}}'
