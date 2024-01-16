@@ -5,7 +5,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: single-namespace-child-apps
+  name: abs-namespace-child-apps
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -22,12 +22,22 @@ spec:
           url: https://github.com/shamonshan/mock-ics-service-organization-backend
           imageversion: 1.0.0
           helmvaluespath: values-org.yml
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      steps:
+        - matchExpressions:
+            - key: type
+              operator: In
+              values:
+                - abs-namespace-child-apps
+          maxUpdate: 1
   template:
     metadata:
       name: '{{.name}}'
       labels:
-        name: common-children-apps
-        type: single-namespace-child-apps
+        name: abs-children-apps
+        type: abs-namespace-child-apps
     spec:
       project: mock-ics-service-infra-integration
       destination:

@@ -21,7 +21,7 @@ spec:
         - list: 
             elements:
               - url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
-                application: fc
+                domain: foreign-claim
                 imageversion: 1.0.1
                 applicatioversion: HEAD
                 helmvaluespath: values-fc.yml
@@ -37,20 +37,26 @@ spec:
           maxUpdate: 1
   template:
     metadata:
-      name: '{{.name}}-{{.application}}'
+      name: '{{.name}}-{{.domain}}'
       labels:
         name: children-apps
-        type: multi-namespace-child-apps
+        type: multiorg-child-apps
     spec:
       project: mock-ics-service-infra-integration
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
-      source:
-        repoURL: '{{.url}}'
+      sources:
+      - repoURL: '{{.url}}'
         targetRevision: '{{.applicatioversion}}'
         path: helm
         helm:
           valueFiles:
-          - values.yaml
+          - $values/helm-configs/{{.helmvaluespath}}
+          parameters:
+          - name: "image.tag"
+            value: '{{.imageversion}}'
+      - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
+        targetRevision: HEAD
+        ref: values
       
