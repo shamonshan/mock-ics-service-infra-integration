@@ -1,11 +1,12 @@
 #!/usr/bin/env zsh
 
+
 set -o errexit
 set -o nounset
 set -o pipefail
 
 OPTIONS=(login
-          set_config sync_apps list_apps sync_with_labels help
+          set_config sync_apps list_apps sync_with_labels apply_argo_config help
          )
 
 help_exit() {
@@ -71,3 +72,8 @@ fi
 if [[ $selections[list_apps] == 'y' ]]; then
    argocd app list 
 fi
+
+if [[ $selections[apply_argo_config] == 'y' ]]; then
+    kubectl apply -f root-app.yml
+fi
+

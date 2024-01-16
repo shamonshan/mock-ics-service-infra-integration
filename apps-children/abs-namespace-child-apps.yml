@@ -17,7 +17,7 @@ spec:
           url: https://github.com/shamonshan/mock-ics-service-abs-upstream.git
           imageversion: 1.0.1
           applicationversion: HEAD
-          helmvaluespath: values-abs.yml
+          helmvaluespath: values-abs.yaml
   template:
     metadata:
       name: '{{.name}}'
