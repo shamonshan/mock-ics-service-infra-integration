@@ -36,7 +36,7 @@ spec:
         path: helm
         helm:
           valueFiles:
-          - $values/helm-configs/{{.helmvaluespath}}
+          - $values/helm-configs/{{.helmvaluesfilepath}}
           parameters:
           - name: "image.tag"
             value: '{{.imageversion}}'

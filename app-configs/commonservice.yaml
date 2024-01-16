@@ -6,11 +6,11 @@ configs:
       url: https://github.com/shamonshan/mock-ics-service-organization-backend
       imageversion: 1.0.1
       helmchartversion: HEAD
-      valuesfilepath: values-org.yaml
+      helmvaluesfilepath: values-org.yaml
     - name: app-common-ui
       namespace: app-common-port
       url: https://github.com/shamonshan/mock-ics-service-ui
       imageversion: 1.0.1
       helmchartversion: HEAD
-      valuesfilepath: values-ui.yaml
+      helmvaluesfilepath: values-ui.yaml
     
