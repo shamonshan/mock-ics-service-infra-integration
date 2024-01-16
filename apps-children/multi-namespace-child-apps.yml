@@ -12,29 +12,14 @@ spec:
   generators:
    - matrix:
       generators:
-        - list: 
-            elements:
-              - name: az-de
-                namespace: az-de
-              - name: az-it
-                namespace: az-it
-        - list: 
-            elements:
-              - url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
-                domain: foreign-claim
-                imageversion: 1.0.1
-                applicationversion: HEAD
-                helmvaluespath: values-fc.yml
-  strategy:
-    type: RollingSync
-    rollingSync:
-      steps:
-        - matchExpressions:
-            - key: type
-              operator: In
-              values:
-                - multi-namespace-child-apps
-          maxUpdate: 1
+      - git:
+          repoURL: https://github.com/shamonshan/mock-ics-service-infra-integration
+          revision: HEAD
+          files:
+          - path: app-configs/multioe.yaml
+      - list:
+          elements: []
+          elementsYaml: "{{ .configs.components | toJson }}"
   template:
     metadata:
       name: '{{.name}}-{{.domain}}'
@@ -49,15 +34,15 @@ spec:
         name: in-cluster
         namespace: '{{.namespace}}'
       sources:
-      - repoURL: '{{.url}}'
-        targetRevision: '{{.applicationversion}}'
+      - repoURL: '{{$url := ""}}{{if eq .domain "fc"}}{{$url = .configs.repos.fc.url}}{{end}}{{$url}}'
+        targetRevision: '{{$revision := ""}}{{if eq .domain "fc"}}{{$revision = .configs.repos.fc.helmchartversion}}{{end}}{{$revision}}'
         path: helm
         helm:
           valueFiles:
-          - $values/helm-configs/{{.helmvaluespath}}
+          - $values/helm-configs/values-fc.yml
           parameters:
           - name: "image.tag"
-            value: '{{.imageversion}}'
+            value: '{{$imageversion := ""}}{{if eq .domain "fc"}}{{$imageversion = .configs.repos.fc.imageversion}}{{end}}{{$imageversion}}'
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
         targetRevision: HEAD
         ref: values
