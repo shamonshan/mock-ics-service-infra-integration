@@ -23,7 +23,6 @@ spec:
       name: '{{.name}}'
       labels:
         name: abs-children-apps
-        type: abs-namespace-child-apps
     spec:
       project: mock-ics-service-infra-integration
       destination:
