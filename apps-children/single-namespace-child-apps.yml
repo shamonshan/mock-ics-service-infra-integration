@@ -45,7 +45,7 @@ spec:
           - name: "image.tag"
             value: '{{.imageversion}}'
           - name : "env.config.local.data.APP_VERSION"
-            value : '{{applicationversion}}'
+            value : '{{.applicationversion}}'
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
         targetRevision: HEAD
         ref: values
