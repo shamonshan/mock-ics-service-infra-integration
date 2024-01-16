@@ -5,7 +5,7 @@ set -o nounset
 set -o pipefail
 
 OPTIONS=(login
-          set_config sync_apps list_apps help
+          set_config sync_apps list_apps sync_with_labels help
          )
 
 help_exit() {
@@ -60,6 +60,12 @@ if [[ $selections[sync_apps] == 'y' ]]; then
     argocd app sync app-common-ui
     argocd app sync az-de-fc
     argocd app sync az-it-fc
+fi
+
+if [[ $selections[sync_with_labels] == 'y' ]]; then
+  argocd app sync -l name=common-children-apps
+  argocd app sync -l name=multiorg-children-apps
+  argocd app sync -l name=abs-children-apps
 fi
 
 if [[ $selections[list_apps] == 'y' ]]; then

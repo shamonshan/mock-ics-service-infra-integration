@@ -39,8 +39,7 @@ spec:
     metadata:
       name: '{{.name}}-{{.domain}}'
       labels:
-        name: children-apps
-        type: multiorg-child-apps
+        name: multiorg-children-apps
     spec:
       project: mock-ics-service-infra-integration
       destination:

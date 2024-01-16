@@ -29,7 +29,6 @@ spec:
       name: '{{.name}}'
       labels:
         name: common-children-apps
-        type: single-namespace-child-apps
     spec:
       project: mock-ics-service-infra-integration
       destination:
