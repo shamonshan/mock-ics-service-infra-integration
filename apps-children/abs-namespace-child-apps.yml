@@ -12,26 +12,11 @@ spec:
   generators:
   - list:
       elements:
-        - name: app-common-ui
-          namespace: app-common-port
-          url: https://github.com/shamonshan/mock-ics-service-ui
-          imageversion: 1.0.0
-          helmvaluespath: values-ui.yml
-        - name: app-common-org
-          namespace: app-common-port
-          url: https://github.com/shamonshan/mock-ics-service-organization-backend
-          imageversion: 1.0.0
-          helmvaluespath: values-org.yml
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      steps:
-        - matchExpressions:
-            - key: type
-              operator: In
-              values:
-                - abs-namespace-child-apps
-          maxUpdate: 1
+        - name: app-abs
+          namespace: app-abs
+          url: https://github.com/shamonshan/mock-ics-service-abs-upstream.git
+          imageversion: 1.0.1
+          helmvaluespath: values-abs.yml
   template:
     metadata:
       name: '{{.name}}'
