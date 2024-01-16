@@ -4,8 +4,6 @@ kind: Application
 metadata:
   name: mock-ics-service-infra-integration-parent
   namespace: default
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: default
