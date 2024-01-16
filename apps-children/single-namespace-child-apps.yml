@@ -32,7 +32,7 @@ spec:
         namespace: '{{.namespace}}'
       sources:
       - repoURL: '{{.url}}'
-        targetRevision: '{{.applicationversion}}'
+        targetRevision: '{{.helmchartversion}}'
         path: helm
         helm:
           valueFiles:
