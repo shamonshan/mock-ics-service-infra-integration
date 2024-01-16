@@ -23,7 +23,7 @@ spec:
               - url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
                 domain: foreign-claim
                 imageversion: 1.0.1
-                applicatioversion: HEAD
+                applicationversion: HEAD
                 helmvaluespath: values-fc.yml
   strategy:
     type: RollingSync
@@ -48,7 +48,7 @@ spec:
         namespace: '{{.namespace}}'
       sources:
       - repoURL: '{{.url}}'
-        targetRevision: '{{.applicatioversion}}'
+        targetRevision: '{{.applicationversion}}'
         path: helm
         helm:
           valueFiles:
