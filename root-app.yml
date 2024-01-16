@@ -10,9 +10,7 @@ spec:
   destination:
     namespace: default
     name: in-cluster
-  project: mock-ics-service-infra-integration
-  syncPolicy:
-    automated: {} 
+  project: mock-ics-service-infra-integrations
   source:
     path: apps-children
     repoURL: https://github.com/shamonshan/mock-ics-service-infra-integration
