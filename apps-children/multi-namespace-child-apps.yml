@@ -42,6 +42,9 @@ spec:
         name: multiorg-children-apps
     spec:
       project: mock-ics-service-infra-integration
+      syncPolicy:
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
