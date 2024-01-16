@@ -1,0 +1,16 @@
+configs:
+  version: 2023-01
+  components:
+    - name: app-common-org
+      namespace: app-common-port
+      url: https://github.com/shamonshan/mock-ics-service-organization-backend
+      imageversion: 1.0.1
+      helmchartversion: HEAD
+      valuesfilepath: values-org.yaml
+    - name: app-common-ui
+      namespace: app-common-port
+      url: https://github.com/shamonshan/mock-ics-service-ui
+      imageversion: 1.0.1
+      helmchartversion: HEAD
+      valuesfilepath: values-ui.yaml
+    

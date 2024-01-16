@@ -10,20 +10,16 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-  - list:
-      elements:
-        - name: app-common-ui
-          namespace: app-common-port
-          url: https://github.com/shamonshan/mock-ics-service-ui
-          imageversion: 1.0.1
-          applicationversion: HEAD
-          helmvaluespath: values-ui.yaml
-        - name: app-common-org
-          namespace: app-common-port
-          url: https://github.com/shamonshan/mock-ics-service-organization-backend
-          imageversion: 1.0.1
-          applicationversion: HEAD
-          helmvaluespath: values-org.yaml
+   - matrix:
+      generators:
+      - git:
+          repoURL: https://github.com/shamonshan/mock-ics-service-infra-integration
+          revision: HEAD
+          files:
+          - path: app-configs/multioe.yaml
+      - list:
+          elements: []
+          elementsYaml: "{{ .configs.components | toJson }}"
   template:
     metadata:
       name: '{{.name}}'
@@ -44,8 +40,8 @@ spec:
           parameters:
           - name: "image.tag"
             value: '{{.imageversion}}'
-          - name : "env.config.local.data.APP_VERSION"
-            value : '{{.applicationversion}}'
+          - name : "env.appVersion"
+            value : '{{.configs.version}}'
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
         targetRevision: HEAD
         ref: values
