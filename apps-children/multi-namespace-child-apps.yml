@@ -39,7 +39,7 @@ spec:
         path: helm
         helm:
           valueFiles:
-          - $values/helm-configs/values-fc.yml
+          - $values/helm-configs/{{$path := ""}}{{if eq .domain "fc"}}{{$path = .configs.repos.fc.valuesfilepath}}{{end}}{{$path}}
           parameters:
           - name: "image.tag"
             value: '{{$imageversion := ""}}{{if eq .domain "fc"}}{{$imageversion = .configs.repos.fc.imageversion}}{{end}}{{$imageversion}}'

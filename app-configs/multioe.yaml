@@ -4,6 +4,7 @@ configs:
     url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
     imageversion: 1.0.1
     helmchartversion: HEAD
+    valuesfilepath: values-fc.yml
   components:
     - name: az-de
       namespace: az-de
