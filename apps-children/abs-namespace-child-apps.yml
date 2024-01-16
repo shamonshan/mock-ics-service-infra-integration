@@ -16,6 +16,7 @@ spec:
           namespace: app-abs
           url: https://github.com/shamonshan/mock-ics-service-abs-upstream.git
           imageversion: 1.0.1
+          applicationversion: HEAD
           helmvaluespath: values-abs.yml
   template:
     metadata:
@@ -28,9 +29,16 @@ spec:
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
-      source:
-        repoURL: '{{.url}}'
+      sources:
+      - repoURL: '{{.url}}'
+        targetRevision: '{{.applicatioversion}}'
         path: helm
         helm:
           valueFiles:
-          - values.yaml
+          - $values/helm-configs/{{.helmvaluespath}}
+          parameters:
+          - name: "image.tag"
+            value: '{{.imageversion}}'
+      - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
+        targetRevision: HEAD
+        ref: values
