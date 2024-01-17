@@ -16,10 +16,13 @@ spec:
           repoURL: https://github.com/shamonshan/mock-ics-service-infra-integration
           revision: HEAD
           files:
-          - path: app-configs/multioe.yaml
+          - path: app-configs/release.yaml
       - list:
           elements: []
-          elementsYaml: "{{ .configs.components | toJson }}"
+          elementsYaml: "{{ .configs.multieoeapps | toJson }}"
+   selector:
+      matchLabels:
+        type: multioe
   template:
     metadata:
       name: '{{.name}}-{{.domain}}'

@@ -6,11 +6,13 @@ configs:
     imageversion: 1.0.1
     helmchartversion: HEAD
     valuesfilepath: values-fc.yml
-  components:
+  multieoeapps:
     - name: az-de
       namespace: az-de
       domain: fc
+      type: multioe
     - name: az-it
       namespace: az-it
       domain: fc
+      type: multioe
     
