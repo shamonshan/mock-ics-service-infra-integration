@@ -1,9 +1,0 @@
-configs:
-  version: 2023-01
-  components:
-    - name: abs-upstream
-      namespace: app-abs
-      url: https://github.com/shamonshan/mock-ics-service-abs-upstream.git
-      imageversion: 1.0.1
-      helmchartversion: HEAD
-      helmvaluesfilepath: values-org.yaml

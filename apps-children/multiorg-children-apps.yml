@@ -5,7 +5,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: multi-namespace-child-apps
+  name: multiorg-children-apps
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
