@@ -20,7 +20,7 @@ spec:
       - list:
           elements: []
           elementsYaml: "{{ .configs.multieoeapps | toJson }}"
-   selector:
+     selector:
       matchLabels:
         type: multioe
   template:
