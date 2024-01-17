@@ -16,7 +16,7 @@ spec:
           repoURL: https://github.com/shamonshan/mock-ics-service-infra-integration
           revision: HEAD
           files:
-          - path: app-configs/release.yaml
+          - path: app-configs/release.yml
       - list:
           elements: []
           elementsYaml: "{{ .configs.multieoeapps | toJson }}"

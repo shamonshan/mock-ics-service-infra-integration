@@ -82,22 +82,22 @@ if [[ $selections[tag_image] == 'y' ]]; then
     cd ..
     cd mock-ics-service-abs-upstream
     tagabs=$(git log -n 1 --pretty=format:"%H")
-    docker tag hello_go_http:latest hello_go_http:${tagabs:0:7}
+    docker tag hello_go_http:1.0.1 hello_go_http:${tagabs:0:7}
     echo "ABS image tag: ${tagabs:0:7}" 
     cd ..
     cd mock-ics-service-foreign-claim-backend
     tagfc=$(git log -n 1 --pretty=format:"%H")
-    docker tag hello_go_http:latest hello_go_http:${tagfc:0:7}
+    docker tag hello_go_http:1.0.1 hello_go_http:${tagfc:0:7}
     echo "FC image tag: ${tagfc:0:7}" 
     cd ..
     cd mock-ics-service-ui
     tagui=$(git log -n 1 --pretty=format:"%H")
-    docker tag hello_go_http:latest hello_go_http:${tagui:0:7}
+    docker tag hello_go_http:1.0.1 hello_go_http:${tagui:0:7}
     echo "UI image tag: ${tagui:0:7}" 
     cd ..
     cd mock-ics-service-organization-backend
     tagorg=$(git log -n 1 --pretty=format:"%H")
-    docker tag hello_go_http:latest hello_go_http:${tagorg:0:7}
+    docker tag hello_go_http:1.0.1 hello_go_http:${tagorg:0:7}
     echo "Org image tag: ${tagorg:0:7}" 
     
 fi
