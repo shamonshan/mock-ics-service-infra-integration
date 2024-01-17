@@ -1,6 +1,6 @@
 configs:
   version: 2023-01
-  repos:
+  multiorgrepos:
    fc: 
     url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
     imageversion: 1.0.1
@@ -15,4 +15,19 @@ configs:
       namespace: az-it
       domain: fc
       type: multioe
+  commonapps:
+    - name: app-common-org
+      namespace: app-common-port
+      url: https://github.com/shamonshan/mock-ics-service-organization-backend
+      imageversion: 1.0.2
+      helmchartversion: HEAD
+      helmvaluesfilepath: values-org.yaml
+      type: common
+    - name: app-common-ui
+      namespace: app-common-port
+      url: https://github.com/shamonshan/mock-ics-service-ui
+      imageversion: 1.0.1
+      helmchartversion: HEAD
+      helmvaluesfilepath: values-ui.yaml
+      type: common
     

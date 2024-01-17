@@ -20,6 +20,9 @@ spec:
       - list:
           elements: []
           elementsYaml: "{{ .configs.components | toJson }}"
+     selector:
+      matchLabels:
+        type: common
   template:
     metadata:
       name: '{{.name}}'

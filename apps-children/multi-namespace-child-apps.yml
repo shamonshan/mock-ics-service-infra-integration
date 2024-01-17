@@ -37,15 +37,15 @@ spec:
         name: in-cluster
         namespace: '{{.namespace}}'
       sources:
-      - repoURL: '{{$url := ""}}{{if eq .domain "fc"}}{{$url = .configs.repos.fc.url}}{{end}}{{$url}}'
-        targetRevision: '{{$revision := ""}}{{if eq .domain "fc"}}{{$revision = .configs.repos.fc.helmchartversion}}{{end}}{{$revision}}'
+      - repoURL: '{{$url := ""}}{{if eq .domain "fc"}}{{$url = .configs.multiorgrepos.fc.url}}{{end}}{{$url}}'
+        targetRevision: '{{$revision := ""}}{{if eq .domain "fc"}}{{$revision = .configs.multiorgrepos.fc.helmchartversion}}{{end}}{{$revision}}'
         path: helm
         helm:
           valueFiles:
-          - $values/helm-configs/{{$path := ""}}{{if eq .domain "fc"}}{{$path = .configs.repos.fc.valuesfilepath}}{{end}}{{$path}}
+          - $values/helm-configs/{{$path := ""}}{{if eq .domain "fc"}}{{$path = .configs.multiorgrepos.fc.valuesfilepath}}{{end}}{{$path}}
           parameters:
           - name: "image.tag"
-            value: '{{$imageversion := ""}}{{if eq .domain "fc"}}{{$imageversion = .configs.repos.fc.imageversion}}{{end}}{{$imageversion}}'
+            value: '{{$imageversion := ""}}{{if eq .domain "fc"}}{{$imageversion = .configs.multiorgrepos.fc.imageversion}}{{end}}{{$imageversion}}'
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
         targetRevision: HEAD
         ref: values
