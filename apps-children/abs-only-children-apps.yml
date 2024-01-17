@@ -20,9 +20,6 @@ spec:
       - list:
           elements: []
           elementsYaml: "{{ .configs.absapps | toJson }}"
-     selector:
-      matchLabels:
-        type: abs
   template:
     metadata:
       name: '{{.name}}'
