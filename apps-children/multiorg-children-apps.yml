@@ -35,14 +35,14 @@ spec:
         namespace: '{{.namespace}}'
       sources:
       - repoURL: '{{$url := ""}}{{if eq .domain "fc"}}{{$url = .configs.multiorgrepos.fc.url}}{{end}}{{$url}}'
-        targetRevision: '{{$revision := ""}}{{if eq .domain "fc"}}{{$revision = .configs.multiorgrepos.fc.helmchartversion}}{{end}}{{$revision}}'
+        targetRevision: '{{$revision := ""}}{{if eq .domain "fc"}}{{$revision = .configs.multiorgrepos.fc.applicationversion}}{{end}}{{$revision}}'
         path: helm
         helm:
           valueFiles:
           - $values/helm-configs/{{$path := ""}}{{if eq .domain "fc"}}{{$path = .configs.multiorgrepos.fc.valuesfilepath}}{{end}}{{$path}}
           parameters:
           - name: "image.tag"
-            value: '{{$imageversion := ""}}{{if eq .domain "fc"}}{{$imageversion = .configs.multiorgrepos.fc.imageversion}}{{end}}{{$imageversion}}'
+            value: '{{$imageversion := ""}}{{if eq .domain "fc"}}{{$imageversion = .configs.multiorgrepos.fc.applicationversion}}{{end}}{{$imageversion}}'
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
         targetRevision: HEAD
         ref: values

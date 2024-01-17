@@ -30,6 +30,9 @@ spec:
         name: abs-children-apps
     spec:
       project: mock-ics-service-infra-integration
+      syncPolicy:
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
@@ -42,7 +45,7 @@ spec:
           - $values/helm-configs/{{.helmvaluesfilepath}}
           parameters:
           - name: "image.tag"
-            value: '{{.imageversion}}'
+            value: '{{.applicationversion}}'
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
         targetRevision: HEAD
         ref: values

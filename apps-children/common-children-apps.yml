@@ -30,19 +30,22 @@ spec:
         name: common-children-apps
     spec:
       project: mock-ics-service-infra-integration
+      syncPolicy:
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
       destination:
         name: in-cluster
         namespace: '{{.namespace}}'
       sources:
       - repoURL: '{{.url}}'
-        targetRevision: '{{.helmchartversion}}'
+        targetRevision: '{{.applicationversion}}'
         path: helm
         helm:
           valueFiles:
           - $values/helm-configs/{{.helmvaluesfilepath}}
           parameters:
           - name: "image.tag"
-            value: '{{.imageversion}}'
+            value: '{{.applicationversion}}'
           - name : "env.appVersion"
             value : '{{.configs.version}}'
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
