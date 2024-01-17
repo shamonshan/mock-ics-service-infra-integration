@@ -10,11 +10,9 @@ configs:
     - name: az-de
       namespace: az-de
       domain: fc
-      type: multioe
     - name: az-it
       namespace: az-it
       domain: fc
-      type: multioe
   commonapps:
     - name: app-common-org
       namespace: app-common-port
@@ -22,19 +20,16 @@ configs:
       imageversion: 1.0.2
       helmchartversion: HEAD
       helmvaluesfilepath: values-org.yaml
-      type: common
     - name: app-common-ui
       namespace: app-common-port
       url: https://github.com/shamonshan/mock-ics-service-ui
       imageversion: 1.0.1
       helmchartversion: HEAD
       helmvaluesfilepath: values-ui.yaml
-      type: common
   absapps:
     - name: abs-upstream
       namespace: app-abs
       url: https://github.com/shamonshan/mock-ics-service-abs-upstream.git
       imageversion: 1.0.1
       helmchartversion: HEAD
-      helmvaluesfilepath: values-org.yaml
-      type: abs 
+      helmvaluesfilepath: values-org.yaml 
