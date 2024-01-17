@@ -19,7 +19,7 @@ configs:
     - name: app-common-org
       namespace: app-common-port
       url: https://github.com/shamonshan/mock-ics-service-organization-backend
-      imageversion: 1.0.1
+      imageversion: 1.0.2
       helmchartversion: HEAD
       helmvaluesfilepath: values-org.yaml
       type: common
