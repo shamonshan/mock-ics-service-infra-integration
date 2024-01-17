@@ -16,10 +16,13 @@ spec:
           repoURL: https://github.com/shamonshan/mock-ics-service-infra-integration
           revision: HEAD
           files:
-          - path: app-configs/abs.yaml
+          - path: app-configs/release.yaml
       - list:
           elements: []
           elementsYaml: "{{ .configs.components | toJson }}"
+     selector:
+      matchLabels:
+        type: abs
   template:
     metadata:
       name: '{{.name}}'
