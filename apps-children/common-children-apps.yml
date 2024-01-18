@@ -35,7 +35,7 @@ spec:
         namespace: '{{.namespace}}'
       sources:
       - repoURL: '{{.url}}'
-        targetRevision: '{{$version := "HEAD" }}{{if .applicationversion }}{{$version = .applicationversion}}{{end}}{{$version}}'
+        targetRevision: '{{$version := .applicationversion }}{{if ne .applicationversion ""}}{{$version = "HEAD"}}{{end}}{{$version}}'
         path: helm
         helm:
           valueFiles:
