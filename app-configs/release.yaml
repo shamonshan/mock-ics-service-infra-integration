@@ -17,11 +17,13 @@ configs:
       namespace: app-common-port
       url: https://github.com/shamonshan/mock-ics-service-organization-backend
       applicationversion: e3d5070
+      imageversion: e3d5070
       helmvaluesfilepath: values-org.yaml
     - name: app-common-ui
       namespace: app-common-port
       url: https://github.com/shamonshan/mock-ics-service-ui
       applicationversion: null
+      imageversion: e3d5070
       helmvaluesfilepath: values-ui.yaml
   absapps:
     - name: abs-upstream

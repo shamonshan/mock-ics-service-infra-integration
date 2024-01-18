@@ -35,14 +35,14 @@ spec:
         namespace: '{{.namespace}}'
       sources:
       - repoURL: '{{.url}}'
-        targetRevision: '{{$version := .applicationversion }}{{if ne .applicationversion ""}}{{$version = "HEAD"}}{{end}}{{$version}}'
+        targetRevision: '{{$version := "HEAD" }}{{if .applicationversion }}{{$version = .applicationversion}}{{end}}{{$version}}'
         path: helm
         helm:
           valueFiles:
           - $values/helm-configs/{{.helmvaluesfilepath}}
           parameters:
           - name: "image.tag"
-            value: '{{.applicationversion}}'
+            value: '{{.imageversion}}'
           - name : "env.appVersion"
             value : '{{.configs.version}}'
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
