@@ -21,7 +21,6 @@ configs:
     - name: app-common-ui
       namespace: app-common-port
       url: https://github.com/shamonshan/mock-ics-service-ui
-      applicationversion: ea71d6d
       helmvaluesfilepath: values-ui.yaml
   absapps:
     - name: abs-upstream
