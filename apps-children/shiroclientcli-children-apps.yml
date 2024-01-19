@@ -19,7 +19,7 @@ spec:
           - path: app-configs/release.yaml
       - list:
           elements: []
-          elementsYaml: "{{ .configs.commonapps | toJson }}"
+          elementsYaml: "{{ .configs.shirocliapps | toJson }}"
   template:
     metadata:
       name: '{{.name}}'
