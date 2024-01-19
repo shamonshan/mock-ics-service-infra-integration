@@ -42,7 +42,7 @@ configs:
       phyluminitchaincodename: substrate_claim
       phyluminitversionold: bootstrap
       phyluminitdomain: foreign-claim 
-      helmvaluesfilepath: values-shiroclient-fc.yaml 
+      helmvaluesfilepath: values-shiroclient-fc.yml 
     
     
   
