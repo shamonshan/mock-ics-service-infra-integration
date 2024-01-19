@@ -37,6 +37,7 @@ configs:
       namespace: app-common-port
       url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
       phylumversion: 092d629
+      imageversion: 1.0.1
       partof: foreign-claim
       phyluminitchaincodename: substrate_claim
       phyluminitversionold: bootstrap
