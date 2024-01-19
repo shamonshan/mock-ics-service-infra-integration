@@ -5,7 +5,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: abs-only-children-apps
+  name: singlenamespace-children-apps
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -19,12 +19,12 @@ spec:
           - path: app-configs/release.yaml
       - list:
           elements: []
-          elementsYaml: "{{ .configs.absapps | toJson }}"
+          elementsYaml: "{{ .configs.commonapps | toJson }}"
   template:
     metadata:
       name: '{{.name}}'
       labels:
-        name: abs-children-apps
+        name: singlenamespace-children-apps
     spec:
       project: mock-ics-service-infra-integration
       syncPolicy:
@@ -35,14 +35,16 @@ spec:
         namespace: '{{.namespace}}'
       sources:
       - repoURL: '{{.url}}'
-        targetRevision: '{{.helmchartversion}}'
+        targetRevision: '{{$version := .applicationversion }}{{if ne .applicationversion ""}}{{$version = "HEAD"}}{{end}}{{$version}}'
         path: helm
         helm:
           valueFiles:
           - $values/helm-configs/{{.helmvaluesfilepath}}
           parameters:
           - name: "image.tag"
-            value: '{{.applicationversion}}'
+            value: '{{.imageversion}}'
+          - name : "env.appVersion"
+            value : '{{.configs.version}}'
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
         targetRevision: HEAD
         ref: values

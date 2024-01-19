@@ -5,7 +5,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: multiorg-children-apps
+  name: multinamespace-children-apps
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -16,7 +16,7 @@ spec:
           repoURL: https://github.com/shamonshan/mock-ics-service-infra-integration
           revision: HEAD
           files:
-          - path: app-configs/release.yml
+          - path: app-configs/release.yaml
       - list:
           elements: []
           elementsYaml: "{{ .configs.multieoeapps | toJson }}"
@@ -24,7 +24,7 @@ spec:
     metadata:
       name: '{{.name}}-{{.domain}}'
       labels:
-        name: multiorg-children-apps
+        name: multinamespace-children-apps
     spec:
       project: mock-ics-service-infra-integration
       syncPolicy:

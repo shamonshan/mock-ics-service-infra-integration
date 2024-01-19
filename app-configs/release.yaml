@@ -25,10 +25,23 @@ configs:
       applicationversion: null
       imageversion: e3d5070
       helmvaluesfilepath: values-ui.yaml
-  absapps:
     - name: abs-upstream
       namespace: app-abs
       url: https://github.com/shamonshan/mock-ics-service-abs-upstream.git
       applicationversion: 092d629
+      imageversion: 092d629
       helmchartversion: HEAD
-      helmvaluesfilepath: values-org.yaml 
+      helmvaluesfilepath: values-org.yaml
+  shirocliapps:
+    - name: shiroclient-cli-fc
+      namespace: app-common-port
+      url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
+      phylumversion: 092d629
+      partof: foreign-claim
+      phyluminitchaincodename: substrate_claim
+      phyluminitversionold: bootstrap
+      phyluminitdomain: foreign-claim 
+      helmvaluesfilepath: values-shiroclient-fc.yaml 
+    
+    
+  
