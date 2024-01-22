@@ -36,7 +36,7 @@ configs:
     - name: shiroclient-cli-fc
       namespace: app-common-port
       url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
-      phylumversion: 79e67a6
+      phylumversion: 45dc407
       imageversion: 1.0.1
       partof: foreign-claim
       phyluminitchaincodename: substrate_claim
@@ -47,7 +47,7 @@ configs:
    repos:
     fc: 
      url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
-     phylumversion: 79e67a6
+     phylumversion: 45dc407
      imageversion: 1.0.1
      helmvaluesfilepath: values-shiroclient-fc.yml
    deployments:
