@@ -39,7 +39,7 @@ spec:
         path: shiroclient/helm
         helm:
           valueFiles:
-          - $values/helm-configs/{{$path := ""}}{{if eq .domain "fc"}}{{$path = .configs.shirogwapps.repos.fc.valuesfilepath}}{{end}}{{$path}}
+          - $values/helm-configs/{{$path := ""}}{{if eq .domain "fc"}}{{$path = .configs.shirogwapps.repos.fc.helmvaluesfilepath}}{{end}}{{$path}}
           parameters:
           - name: "image.tag"
             value: '{{$imageversion := ""}}{{if eq .domain "fc"}}{{$imageversion = .configs.shirogwapps.repos.fc.imageversion}}{{end}}{{$imageversion}}'
