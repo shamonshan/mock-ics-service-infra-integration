@@ -43,6 +43,22 @@ configs:
       phyluminitversionold: bootstrap
       phyluminitdomain: foreign-claim 
       helmvaluesfilepath: values-shiroclient-fc.yml 
+  shirogwapps:
+   repos:
+    fc: 
+     url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
+     phylumversion: 79e67a6
+     imageversion: 1.0.1
+     helmvaluesfilepath: values-shiroclient-fc.yml
+   deployments:
+    - name: shiroclient-gw-az-de
+      namespace: az-de
+      partof: foreign-claim
+      domain: fc
+    - name: shiroclient-gw-az-it
+      namespace: az-it
+      partof: foreign-claim
+      domain: fc
     
     
   

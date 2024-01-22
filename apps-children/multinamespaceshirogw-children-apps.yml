@@ -1,0 +1,53 @@
+# App templates can also be defined as part of the generator's template stanza. Sometimes it is
+# useful to do this in order to override the spec.template stanza, and when simple string
+# parameterization are insufficient. In the below examples, the generators[].XXX.template is 
+# a partial definition, which overrides/patch the default template.
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: multinamespaceshirogw-children-apps
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+   - matrix:
+      generators:
+      - git:
+          repoURL: https://github.com/shamonshan/mock-ics-service-infra-integration
+          revision: HEAD
+          files:
+          - path: app-configs/release.yaml
+      - list:
+          elements: []
+          elementsYaml: "{{ .configs.shirogwapps.deployments | toJson }}"
+  template:
+    metadata:
+      name: '{{.name}}'
+      labels:
+        name: multinamespaceshirogw-children-apps
+    spec:
+      project: mock-ics-service-infra-integration
+      syncPolicy:
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
+      destination:
+        name: in-cluster
+        namespace: '{{.namespace}}'
+      sources:
+      - repoURL: '{{$url := ""}}{{if eq .domain "fc"}}{{$url = .configs.shirogwapps.repos.fc.url}}{{end}}{{$url}}'
+        targetRevision: '{{$revision := ""}}{{if eq .domain "fc"}}{{$revision = .configs.shirogwapps.repos.fc.phylumversion}}{{end}}{{$revision}}'
+        path: shiroclient/helm
+        helm:
+          valueFiles:
+          - $values/helm-configs/{{$path := ""}}{{if eq .domain "fc"}}{{$path = .configs.shirogwapps.repos.fc.valuesfilepath}}{{end}}{{$path}}
+          parameters:
+          - name: "image.tag"
+            value: '{{$imageversion := ""}}{{if eq .domain "fc"}}{{$imageversion = .configs.shirogwapps.repos.fc.imageversion}}{{end}}{{$imageversion}}'
+          - name : "runMode"
+            value : 'gateway'
+          - name : "partOf"
+            value : '{{.partof}}'
+      - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
+        targetRevision: HEAD
+        ref: values
+      
