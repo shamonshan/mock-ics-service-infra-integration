@@ -64,9 +64,10 @@ if [[ $selections[sync_apps] == 'y' ]]; then
 fi
 
 if [[ $selections[sync_with_labels] == 'y' ]]; then
-  argocd app sync -l name=common-children-apps
-  argocd app sync -l name=multiorg-children-apps
-  argocd app sync -l name=abs-children-apps
+  argocd app sync -l name=singlenamespace-children-apps --apply-out-of-sync-only
+  argocd app sync -l name=multinamespace-children-apps --apply-out-of-sync-only
+  argocd app sync -l name=shiroclientcli-children-apps --apply-out-of-sync-only
+  argocd app sync -l name=multinamespaceshirogw-children-apps --apply-out-of-sync-only
 fi
 
 if [[ $selections[list_apps] == 'y' ]]; then

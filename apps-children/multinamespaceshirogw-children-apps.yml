@@ -47,6 +47,8 @@ spec:
             value : 'gateway'
           - name : "partOf"
             value : '{{.partof}}'
+          - name : "postsync.enabled"
+            value: false
       - repoURL: 'https://github.com/shamonshan/mock-ics-service-infra-integration'
         targetRevision: HEAD
         ref: values

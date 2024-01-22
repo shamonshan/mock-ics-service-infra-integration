@@ -41,6 +41,8 @@ service:
   type: ClusterIP
   port: 8082
 
+postsync:
+  enabled: true
 ingress:
   enabled: false
   annotations: {}
