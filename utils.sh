@@ -6,7 +6,7 @@ set -o nounset
 set -o pipefail
 
 OPTIONS=(login
-          set_config sync_apps list_apps sync_with_labels apply_argo_config tag_image help
+          set_config sync_apps list_apps sync_with_labels apply_argo_config tag_image delete_apps help
          )
 
 help_exit() {
@@ -102,4 +102,9 @@ if [[ $selections[tag_image] == 'y' ]]; then
     echo "Org image tag: ${tagorg:0:7}" 
     
 fi
+
+if [[ $selections[delete_apps] == 'y' ]]; then
+   argocd app delete mock-ics-service-infra-integration-parent
+fi
+
 
