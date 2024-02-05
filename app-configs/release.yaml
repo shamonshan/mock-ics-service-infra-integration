@@ -3,7 +3,7 @@ configs:
   multiorgrepos:
    fc: 
     url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
-    applicationversion: a575beess
+    applicationversion: a175bee
     valuesfilepath: values-fc.yml
   multieoeapps:
     - name: az-de
