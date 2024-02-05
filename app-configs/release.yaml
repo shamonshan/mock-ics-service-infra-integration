@@ -3,9 +3,9 @@ configs:
   multiorgrepos:
    fc: 
     url: https://github.com/shamonshan/mock-ics-service-foreign-claim-backend.git
-    applicationversion: a175bee
+    applicationversion: a575bee
     valuesfilepath: values-fc.yml
-  multieoeapps:
+  multioeapps:
     - name: az-de
       namespace: az-de
       domain: fc
@@ -17,21 +17,12 @@ configs:
       namespace: app-common-port
       url: https://github.com/shamonshan/mock-ics-service-organization-backend
       applicationversion: e3d5070
-      imageversion: e3d5070
       helmvaluesfilepath: values-org.yaml
     - name: app-common-ui
       namespace: app-common-port
       url: https://github.com/shamonshan/mock-ics-service-ui
-      applicationversion: null
-      imageversion: e3d5070
+      applicationversion: e3d5070
       helmvaluesfilepath: values-ui.yaml
-    - name: abs-upstream
-      namespace: app-abs
-      url: https://github.com/shamonshan/mock-ics-service-abs-upstream.git
-      applicationversion: 092d629
-      imageversion: 092d629
-      helmchartversion: HEAD
-      helmvaluesfilepath: values-org.yaml
   shirocliapps:
     - name: shiroclient-cli-fc
       namespace: app-common-port

@@ -19,7 +19,7 @@ spec:
           - path: app-configs/release.yaml
       - list:
           elements: []
-          elementsYaml: "{{ .configs.multieoeapps | toJson }}"
+          elementsYaml: "{{ .configs.multioeapps | toJson }}"
   template:
     metadata:
       name: '{{.name}}-{{.domain}}'
@@ -28,6 +28,7 @@ spec:
     spec:
       project: mock-ics-service-infra-integration
       syncPolicy:
+        automated: {}
         syncOptions:
           - ApplyOutOfSyncOnly=true
       destination:
