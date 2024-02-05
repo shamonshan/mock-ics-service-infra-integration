@@ -6,7 +6,7 @@ set -o nounset
 set -o pipefail
 
 OPTIONS=(login
-          set_config sync_apps list_apps sync_with_labels apply_argo_config tag_image delete_apps help
+          set_config sync_apps list_apps sync_with_labels apply_argo_config mock_build delete_apps help
          )
 
 help_exit() {
@@ -79,7 +79,7 @@ if [[ $selections[apply_argo_config] == 'y' ]]; then
     kubectl apply -f root-app.yml
 fi
 
-if [[ $selections[tag_image] == 'y' ]]; then
+if [[ $selections[mock_build] == 'y' ]]; then
     cd ..
     cd mock-ics-service-abs-upstream
     tagabs=$(git log -n 1 --pretty=format:"%H")
