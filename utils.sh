@@ -81,11 +81,6 @@ fi
 
 if [[ $selections[mock_build] == 'y' ]]; then
     cd ..
-    cd mock-ics-service-abs-upstream
-    tagabs=$(git log -n 1 --pretty=format:"%H")
-    docker tag hello_go_http:1.0.1 hello_go_http:${tagabs:0:7}
-    echo "ABS image tag: ${tagabs:0:7}" 
-    cd ..
     cd mock-ics-service-foreign-claim-backend
     tagfc=$(git log -n 1 --pretty=format:"%H")
     docker tag hello_go_http:1.0.1 hello_go_http:${tagfc:0:7}
