@@ -28,7 +28,6 @@ spec:
     spec:
       project: mock-ics-service-infra-integration
       syncPolicy:
-        automated: {}
         syncOptions:
           - ApplyOutOfSyncOnly=true
       destination:
